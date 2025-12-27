@@ -249,6 +249,3 @@ if (!repo.existsBySourceUrlAndEmail(url, email)) { // O(log n)
 - ⬇️ Частота GC снижена на **50%**
 - ⬆️ Пропускная способность увеличена на **40-60%**
 - ✅ Блокировки потоков устранены
-=======
-# Itogovaya-Ypravlenie-Suslov
->>>>>>> 4dd3fccabdc97b086841242b2e40f811f96ef768
