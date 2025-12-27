@@ -1,0 +1,94 @@
+{
+  "dashboard": {
+    "title": "Crawler Contact Performance",
+    "tags": ["crawler", "performance"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Average Parsing Time",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(parser_parsing_time_seconds_sum[5m]) / rate(parser_parsing_time_seconds_count[5m]) * 1000",
+            "legendFormat": "Average Time (ms)"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms",
+            "color": {"mode": "palette-classic"}
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Success vs Errors",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(parser_success_total[5m])",
+            "legendFormat": "Success"
+          },
+          {
+            "expr": "rate(parser_error_total[5m])",
+            "legendFormat": "Errors"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ops/sec"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Saved Records Rate",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "rate(parser_saved_total[5m])",
+            "legendFormat": "Saved Records"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ops/sec"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Total Metrics",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "parser_success_total",
+            "legendFormat": "Total Success"
+          },
+          {
+            "expr": "parser_error_total",
+            "legendFormat": "Total Errors"
+          },
+          {
+            "expr": "parser_saved_total",
+            "legendFormat": "Total Saved"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8},
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          }
+        }
+      }
+    ],
+    "refresh": "10s",
+    "schemaVersion": 27,
+    "version": 1
+  }
+}
+
